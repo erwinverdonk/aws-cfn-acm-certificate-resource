@@ -1,0 +1,28 @@
+{
+  "name": "aws-cfn-acm-certificate-resource",
+  "version": "1.0.10",
+  "description": "",
+  "scripts": {
+    "start": "./index.js",
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "build:dev": "webpack --config ./webpack.config.js --mode development"
+  },
+  "bin": "./index.js",
+  "author": "Erwin Verdonk <e.verdonk@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^9.6.5",
+    "aws-sdk": "^2.215.1",
+    "ts-loader": "^4.2.0",
+    "typescript": "^2.8.1",
+    "webpack": "^4.6.0",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "^2.0.15"
+  },
+  "dependencies": {
+    "@erwinverdonk/aws-cfn-wait": "^1.0.3",
+    "@erwinverdonk/aws-lambda-upload-deploy": "^1.0.8",
+    "aws-assume-role": "git+https://github.com/erwinverdonk/aws-assume-role.git",
+    "minimist": "^1.2.0"
+  }
+}

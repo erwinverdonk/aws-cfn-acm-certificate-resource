@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": false,
+    "target": "es6",
+    "moduleResolution": "Node",
+    "outDir": "./dist"
+  },
+  "files": [
+    "./src/index.ts"
+  ]
+}
