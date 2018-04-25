@@ -5,8 +5,9 @@ const pjson = require(__dirname + '/package.json');
 process.env.AWS_DEFAULT_REGION = argv.region || 'us-east-1';
 process.env.AWS_REGION = process.env.AWS_DEFAULT_REGION
 
-if(!argv.bucketName){
-  throw new Error('No bucket name provided as destination for the Lambda package.');
+if(!argv['bucket-name']){
+  console.error('No "bucket-name" parameter provided as destination for the Lambda package.');
+  process.exit();
 }
 
 const run = () => {
@@ -23,7 +24,7 @@ const run = () => {
     sourcePath: `${__dirname}/dist`,
     version: pjson.version,
     s3: {
-      bucketName: `${argv.bucketName}-${process.env.AWS_REGION}`
+      bucketName: `${argv['bucket-name']}-${process.env.AWS_REGION}`
     },
     settings: {
       runtime: 'nodejs8.10',
@@ -57,12 +58,12 @@ const run = () => {
 }
 
 // When a Role Arn is provided we try to assume the role before proceeding.
-if(argv.roleArn){
+if(argv['role-arn']){
   const AWS = require('aws-sdk');
   const assumeRole = require('aws-assume-role').assumeRole;
 
   assumeRole({
-    roleArn: argv.roleArn // 'arn:aws:iam::922005556491:role/Administrator'
+    roleArn: argv['role-arn']
   })
   .then(_ => {
     // Setting temporary credentials as the credentials to use.

@@ -1,8 +1,11 @@
 const path = require('path');
 
-module.exports = {
+module.exports = (env) => ({
   entry: './src/index.ts',
   externals: ['aws-sdk'],
+  optimization: {
+    minimize: env.WEBPACK_MINIMIZE !== 'false'
+  },
   target: "node",
   module: {
     rules: [
@@ -21,4 +24,4 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
   }
-};
+});
