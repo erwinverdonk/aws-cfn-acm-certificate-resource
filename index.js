@@ -5,6 +5,10 @@ const pjson = require(__dirname + '/package.json');
 process.env.AWS_DEFAULT_REGION = argv.region || 'us-east-1';
 process.env.AWS_REGION = process.env.AWS_DEFAULT_REGION
 
+if(!argv.bucketName){
+  throw new Error('No bucket name provided as destination for the Lambda package.');
+}
+
 const run = () => {
   const AwsLambdaUploadDeploy = require(
     '@erwinverdonk/aws-lambda-upload-deploy'
@@ -19,7 +23,7 @@ const run = () => {
     sourcePath: `${__dirname}/dist`,
     version: pjson.version,
     s3: {
-      bucketName: `analytics-lambdas-${process.env.AWS_REGION}`
+      bucketName: `${argv.bucketName}-${process.env.AWS_REGION}`
     },
     settings: {
       runtime: 'nodejs8.10',
