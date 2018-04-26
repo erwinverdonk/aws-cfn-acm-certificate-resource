@@ -4,7 +4,7 @@ module.exports = (env) => ({
   entry: './src/index.ts',
   externals: ['aws-sdk'],
   optimization: {
-    minimize: env.WEBPACK_MINIMIZE !== 'false'
+    minimize: env && env.WEBPACK_MINIMIZE !== 'false'
   },
   target: "node",
   module: {

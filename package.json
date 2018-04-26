@@ -1,11 +1,14 @@
 {
   "name": "@erwinverdonk/aws-cfn-acm-certificate-resource",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "scripts": {
     "start": "./index.js",
     "build": "webpack --config ./webpack.config.js --mode production",
     "build:dev": "webpack --config ./webpack.config.js --mode none --env.WEBPACK_MINIMIZE=false"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "bin": "./index.js",
   "author": "Erwin Verdonk <e.verdonk@gmail.com>",
@@ -21,7 +24,7 @@
   },
   "dependencies": {
     "@erwinverdonk/aws-cfn-wait": "^1.0.3",
-    "@erwinverdonk/aws-lambda-upload-deploy": "^1.0.8",
+    "@erwinverdonk/aws-lambda-upload-deploy": "^1.0.10",
     "aws-assume-role": "git+https://github.com/erwinverdonk/aws-assume-role.git",
     "minimist": "^1.2.0"
   }
