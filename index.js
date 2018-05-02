@@ -15,9 +15,7 @@ const run = () => {
     '@erwinverdonk/aws-lambda-upload-deploy'
   ).AwsLambdaUploadDeploy;
 
-  const functionName = (
-    `AwsCfnAcmCertificateResource-${pjson.version.replace(/\./g, '-')}`
-  );
+  const functionName = 'AwsCfnAcmCertificateResource';
 
   AwsLambdaUploadDeploy({
     functionName,
@@ -34,7 +32,10 @@ const run = () => {
         {
           effect: 'Allow',
           action: ['lambda:InvokeFunction'],
-          resource: [`arn:aws:lambda:*:*:function:${functionName}:*`]
+          resource: [
+            `arn:aws:lambda:*:*:function:${functionName}`,
+            `arn:aws:lambda:*:*:function:${functionName}:*`
+          ]
         },
         {
           effect: 'Allow',

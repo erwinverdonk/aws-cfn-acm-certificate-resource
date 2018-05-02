@@ -5,4 +5,9 @@ type Callback = (error?:any, result?:any) => void;
 
 export const handler = (event:any, context:any, callback: Callback) => {
 	AwsCfnWait.create({ CustomResource: AcmCertificate, event, context, callback })
+		.catch(_ => {
+			console.error(_);
+			callback(_, null);
+			process.exit();
+		})
 };
